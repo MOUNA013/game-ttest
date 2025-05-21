@@ -24,10 +24,10 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-    public function setPasswordAttribute($value)
-{
-    $this->attributes['password'] = Hash::make($value);
-}
+//     public function setPasswordAttribute($value)
+// {
+//     $this->attributes['password'] = Hash::make($value);
+// }
 
     /**
      * The attributes that should be hidden for serialization.

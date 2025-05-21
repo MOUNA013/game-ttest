@@ -11,9 +11,15 @@ use App\Http\Controllers\Games;
 use App\Http\Controllers\Users;
 
 
+
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
+
+Route::middleware('auth:sanctum')->get('/check-user', function (Request $request) {
+    return response()->json(['exists' => true]);
+});
+
 Route::get('/users', [Users::class, 'index']);
 Route::get('/users/{id}', [Users::class, 'show']);
 Route::post('/users', [Users::class, 'store']);

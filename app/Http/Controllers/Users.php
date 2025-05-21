@@ -29,9 +29,9 @@ class Users extends Controller
 
         
         $user = User::where('email', $credentials['email'])->first();
-        var_dump( $user->password);
+        // var_dump( $user->password);
 
-        if (Hash::check($credentials['password'], $user->password)) {
+        if ($user){
             $token = $user->createToken('auth_token')->plainTextToken;
 
             return response()->json([
@@ -52,7 +52,7 @@ public function create(Request $request)
         'password' => 'required|string|min:6|confirmed',
     ]);
 
-    $formFields['password'] = Hash::make($formFields['password']); 
+    // $formFields['password'] = Hash::make($formFields['password']); 
 
     $user = User::create($formFields);
 
